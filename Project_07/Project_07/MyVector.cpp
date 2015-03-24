@@ -115,4 +115,22 @@ int MyVector::at(int _pos)
 	return vPointer[_pos];
 }
 
+int MyVector::operator[](int i) const
+{
+	return vPointer[i];
+}
+
+int& MyVector::operator[](int i)
+{
+	return vPointer[i];
+}
+
+ostream& operator<<(ostream& out, const MyVector& value)
+{
+	for (unsigned i = 0; i < value.size(); i++)
+	{
+		out << value[i];
+	}
+	return out;
+}
 // End of file

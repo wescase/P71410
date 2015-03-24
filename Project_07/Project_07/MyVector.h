@@ -75,6 +75,16 @@ MyVector(const MyVector&);
 	// Parameters: int - location of the pointer
 	// Returns: int value and given location
 	int at(int point);
+
+	// Purpose: to retrieve a value at given index
+	// Parameters: int - index #
+	// Returns: Value at given index
+	int operator[](int i) const;
+
+	// Purpose: to store a value in given index
+	// Parameters: int - index #
+	// Returns: reference to the index storage location
+	int& operator[](int i);
 	
 private:
 
@@ -83,3 +93,8 @@ private:
 	int volume;
 	int* vPointer;
 };
+
+// Purpose: 
+// Paramenters:
+// Returns:
+ostream& operator<<(ostream&, const MyVector&);
