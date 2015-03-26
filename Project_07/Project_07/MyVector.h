@@ -4,8 +4,8 @@
 * File: MyVector.h
 * Instructor: Dr. DeBry
 * Class: CS1410-001
-* Date Written:
-* Description:
+* Date Written: March 26, 2015
+* Description: Manage the memory correctly, overload operators to handle copying objects
 *
 * I declare the the following source code was written by Wes and Morgan,
 * I understand the copying of any source code in whole or in part constitutes cheating,
@@ -41,15 +41,15 @@ public:
 	// Returns: None
 	MyVector(int);
 
-// Purpose: 
-// Parameters:
-// Returns:
-MyVector& operator=(const MyVector&);
+	// Purpose: Overload the = operator to handle copying one object to another
+	// Parameters: vector to copy from 
+	// Returns: MyVector
+	MyVector& operator=(const MyVector&);
 
-// Purpose: 
-// Parameters:
-// Returns:
-MyVector(const MyVector&);
+	// Purpose: Copy constructor
+	// Parameters: Object to copy from
+	// Returns: none
+	MyVector(const MyVector&);
 
 	// Purpose: Gives the number of elements in the vector
 	// Parameters: none
@@ -94,7 +94,7 @@ private:
 	int* vPointer;
 };
 
-// Purpose: 
-// Paramenters:
-// Returns:
+// Purpose: Overload how to cout an object
+// Paramenters: ostream by ref, MyVector by ref
+// Returns: the ostream to cout
 ostream& operator<<(ostream&, const MyVector&);

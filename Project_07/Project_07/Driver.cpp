@@ -4,8 +4,8 @@
 * File: Driver.cpp
 * Instructor: Dr. DeBry
 * Class: CS1410-001
-* Date Written:
-* Description:
+* Date Written: March 26, 2015
+* Description: Manage the memory correctly, overload operators to handle copying objects
 *
 * I declare the the following source code was written by Wes and Morgan,
 * I understand the copying of any source code in whole or in part constitutes cheating,

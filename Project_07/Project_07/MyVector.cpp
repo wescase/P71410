@@ -4,8 +4,8 @@
 * File: MyVector.cpp
 * Instructor: Dr. DeBry
 * Class: CS1410-001
-* Date Written: March 24, 2015
-* Description: Manage the memory correctly, overload the 
+* Date Written: March 26, 2015
+* Description: Manage the memory correctly, overload operators to handle copying objects
 *
 * I declare the the following source code was written by Wes and Morgan,
 * I understand the copying of any source code in whole or in part constitutes cheating,
@@ -24,6 +24,7 @@ MyVector::MyVector()
 MyVector::~MyVector()
 {
 	delete[] vPointer;
+	vPointer = nullptr;
 }
 
 MyVector::MyVector(int _cap)
@@ -35,27 +36,29 @@ MyVector::MyVector(int _cap)
 
 MyVector::MyVector(const MyVector& ob1)
 {
-	if (vPointer != nullptr)
-	{
-		delete vPointer;
-	}
-
-	this->mass = ob1.mass;
-	this->volume = ob1.volume;
+	mass = ob1.mass;
+	volume = ob1.volume;
 	vPointer = new int[volume];
+	
+	for (unsigned i = 0; i < mass; i++)
+	{
+		vPointer[i] = ob1.vPointer[i];
+	}
 }
 
 MyVector& MyVector::operator=(const MyVector& obj)
 {
 	if (vPointer != nullptr)
 	{
-		delete vPointer;
+		delete[] vPointer;
 	}
-
-	this->mass = obj.mass;
-	this->volume = obj.volume;
-	vPointer = new int[volume];
-
+		mass = obj.mass;
+		volume = obj.volume;
+		vPointer = new int[volume];
+		for (unsigned i = 0; i < mass; i++)
+		{
+			vPointer[i] = obj.vPointer[i];
+		}
 	return *this;
 }
 
@@ -117,12 +120,20 @@ int MyVector::at(int _pos)
 
 int MyVector::operator[](int i) const
 {
-	return vPointer[i];
+	if (i < volume)
+	{
+		return vPointer[i];
+	}
+	return 0;
 }
 
 int& MyVector::operator[](int i)
 {
-	return vPointer[i];
+	if (i < volume)
+	{
+		return vPointer[i];
+	}
+	return i;
 }
 
 ostream& operator<<(ostream& out, const MyVector& value)
